@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'film.dart';
+import 'berita.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailFilmPage extends StatelessWidget {
@@ -32,10 +32,6 @@ class DetailFilmPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 10),
-            Text("Tahun: ${film.year}", style: const TextStyle(fontSize: 18)),
-            Text("Genre: ${film.genre}", style: const TextStyle(fontSize: 18)),
-            Text("Rating: ${film.rating}", style: const TextStyle(fontSize: 18)),
 
             const SizedBox(height: 10),
 
@@ -55,11 +51,11 @@ class DetailFilmPage extends StatelessWidget {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 }
               },
-              child: const Text("Open Wikipedia"),
+              child: const Text("Lihat Sumber"),
             ),
           ],
         ),
       ),
     );
-  }
+  } 
 }

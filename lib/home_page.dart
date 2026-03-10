@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'detail_film.dart';
-import 'film.dart';
+import 'detail_berita.dart';
+import 'berita.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,12 +18,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Daftar Film"),
+
       ),
       body: ListView.builder(
         itemCount: filmList.length,
         itemBuilder: (context, index) {
           final film = filmList[index];
-          bool isAdded = addedList[index];
+          bool isLiked=true;
 
           return Card(
             margin: const EdgeInsets.all(10),
@@ -40,11 +41,6 @@ class _HomePageState extends State<HomePage> {
                     title: Text(film.title),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Tahun: ${film.year}"),
-                        Text("Genre: ${film.genre}"),
-                        Text("Rating:${film.rating}"),
-                      ],
                     ),
                     onTap: () {
                       Navigator.push(
@@ -63,22 +59,33 @@ class _HomePageState extends State<HomePage> {
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
                         backgroundColor:
-                            isAdded ? Colors.blue : Colors.white,
+                            isLiked ? const Color.fromARGB(255, 208, 15, 82) : Colors.white,
                         side: BorderSide(
-                          color: isAdded ? Colors.blue : Colors.grey,
+                          color: isLiked ? const Color.fromARGB(255, 233, 138, 14) : Colors.grey,
                         ),
                       ),
+                        
+                  
                       onPressed: () {
+                        if(isLiked=true){
                         setState(() {
-                          addedList[index] = !addedList[index];
-                        });
+                        isLiked = false;
+                        film.like = film.like+1;
+                        });}
+                        else{
+                        setState(() {
+                        isLiked = true;
+                        film.like = film.like-1;
+                        });}
                       },
+                     
                       child: Text(
-                        "Tambahkan ke Daftar",
+                        "${film.like}",
                         style: TextStyle(
-                          color: isAdded ? Colors.white : Colors.black,
-                        ),
+                          color: isLiked? const Color.fromARGB(255, 255, 255, 255) : const Color.fromARGB(255, 209, 4, 4),
+                        ),    
                       ),
+                   
                     ),
                   ),
                 ],

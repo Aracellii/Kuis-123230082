@@ -18,6 +18,8 @@ class _LoginPageState extends State<LoginPage> {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
 
+    String e = "Luthfi@gmail.com";
+    String p = "123";
     // 1. Cek email
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -29,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     // 2. Validasi 
-    if (email == "LuthfiAlaudinRosyid@gmail.com" && password == "12345678") {
+    if (email == e && password == p) {
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -54,14 +56,18 @@ class _LoginPageState extends State<LoginPage> {
           'Login Page',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue,
+        
+       
+        
+        backgroundColor: const Color.fromARGB(255, 41, 169, 2),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
+            Column(children: [Image.asset("upn.png")] ),          
             const Text(
               "Login",
               style: TextStyle(
@@ -96,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: _login,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: const Color.fromARGB(255, 7, 222, 57),
                 foregroundColor: Colors.white,
                 minimumSize: const Size(250, 60),
               ),
